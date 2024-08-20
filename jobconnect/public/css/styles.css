@@ -241,3 +241,105 @@
   footer p {
     margin-bottom: 0;
   }
+
+  /* Estrutura Geral */
+form {
+  width: 60%;
+  margin: 0 auto;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1, h3 {
+  text-align: center;
+  color: #333;
+  font-family: 'Arial', sans-serif;
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-top: 15px;
+  font-weight: bold;
+  color: #555;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="url"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+textarea {
+  resize: vertical;
+  height: 100px;
+}
+
+button[type="submit"] {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 15px;
+  font-size: 18px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+button[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+button[type="button"] {
+  display: block;
+  background-color: #f1f1f1;
+  color: #555;
+  padding: 10px 20px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+button[type="button"]:hover {
+  background-color: #e1e1e1;
+}
+
+/* Grid para Experiência, Educação, Habilidades e Idiomas */
+.experience, .education, .skill, .language {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #fff;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.experience:last-of-type, .education:last-of-type, .skill:last-of-type, .language:last-of-type {
+  margin-bottom: 20px;
+}
+
+/* Estilos Responsivos */
+@media (max-width: 768px) {
+  form {
+      width: 90%;
+  }
+
+  input[type="text"], input[type="date"], input[type="url"], textarea {
+      font-size: 14px;
+  }
+
+  button[type="submit"], button[type="button"] {
+      font-size: 16px;
+  }
+}

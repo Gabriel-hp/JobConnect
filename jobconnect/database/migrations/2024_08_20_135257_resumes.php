@@ -11,7 +11,7 @@ return new class extends Migration
         if (!Schema::hasTable('resumes')) {
             Schema::create('resumes', function (Blueprint $table) {
                 $table->id();
-                $table->foreignId('usuario_id')->constrained('users')->onDelete('cascade');
+                $table->foreignId('id_usuario')->constrained('users')->onDelete('cascade');
                 $table->string('titulo')->nullable();
                 $table->timestamps();
             });

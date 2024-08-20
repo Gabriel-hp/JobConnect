@@ -23,14 +23,12 @@
 
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a href="/" class="nav-link">Meu curriculo</a>
+                <a href="/" class="nav-link">Vagas</a>
               </li>
               <li class="nav-item">
-                <a href="/events/create" class="nav-link">Minhas Vagas </a>
+                <a href="/resumes/create" class="nav-link">Meu curriculo </a>
               </li>
-              <li class="nav-item">
-                <a href="/dashboard" class="nav-link">Vagas</a>
-              </li>
+         
             </ul>
           </div>
         </nav>

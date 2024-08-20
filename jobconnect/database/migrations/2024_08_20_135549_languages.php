@@ -13,7 +13,7 @@ return new class extends Migration
                 $table->id();
                 $table->foreignId('resume_id')->constrained('resumes')->onDelete('cascade');
                 $table->string('idioma');
-                $table->string('nivel'); // Ex: básico, intermediário, avançado
+                $table->string('nivel')->default('iniciante')->change(); // Ex: básico, intermediário, avançado
                 $table->timestamps();
             });
         }

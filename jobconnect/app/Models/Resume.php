@@ -2,36 +2,35 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Resume extends Model
 {
-    use HasFactory;
+    protected $fillable = [
+        'nome_completo', 'data_nascimento', 'telefone', 'endereco', 
+        'nacionalidade', 'estado_civil', 'link_linkedin', 'link_portfolio'
+    ];
 
-    protected $fillable = ['usuario_id', 'titulo'];
-
-    public function personalDetail()
-    {
-        return $this->hasOne(PersonalDetail::class);
-    }
-
-    public function professionalExperience()
+    // Relacionamento com experiências
+    public function experiences()
     {
         return $this->hasMany(ProfessionalExperience::class);
     }
 
-    public function education()
+    // Relacionamento com educação
+    public function educations()
     {
         return $this->hasMany(Education::class);
     }
 
-    public function skill()
+    // Relacionamento com habilidades
+    public function skills()
     {
         return $this->hasMany(Skill::class);
     }
 
-    public function language()
+    // Relacionamento com idiomas
+    public function languages()
     {
         return $this->hasMany(Language::class);
     }

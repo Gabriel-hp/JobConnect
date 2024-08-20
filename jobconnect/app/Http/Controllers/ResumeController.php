@@ -26,7 +26,7 @@ class ResumeController extends Controller{
     {
           // Cria o currículo (Resume)
         $resume = Resume::create([
-            'usuario_id' => 5
+            'usuario_id' => 35411
         ]);
 
         // Cria os detalhes pessoais
@@ -86,12 +86,20 @@ class ResumeController extends Controller{
             ]);
         }
 
-        return redirect()->route('resumes.index')->with('success', 'Currículo criado com sucesso!');
+        return redirect()->route('resumes.show')->with('success', 'Currículo criado com sucesso!');
     }
 
     public function show($id)
     {
-        return Resume::with(['personalDetail', 'professionalExperience', 'education', 'skill', 'language'])->find($id);
+        // Carrega o currículo junto com suas relações
+        $resume = Resume::with(['ProfessionalExperience', 'Education', 'PersonalDetail', 'Skill', 'Language'])
+                        ->findOrFail($id);
+
+
+        return view('resumes.show', compact('resumes'));
+
+        
+        
     }
 
 }

@@ -9,7 +9,7 @@ return new class extends Migration
     public function up(): void
     {
         if (!Schema::hasTable('professional_experience')) {
-            Schema::create('professional_experience', function (Blueprint $table) {
+            Schema::create('professional_experiences', function (Blueprint $table) {
                 $table->id();
                 $table->foreignId('resume_id')->constrained('resumes')->onDelete('cascade');
                 $table->string('cargo');

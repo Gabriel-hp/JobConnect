@@ -26,7 +26,7 @@
                 <a href="/" class="nav-link">Vagas</a>
               </li>
               <li class="nav-item">
-                <a href="/resumes/create" class="nav-link">Meu curriculo </a>
+                <a href="/resumes/show" class="nav-link">Meu curriculo </a>
               </li>
          
             </ul>

@@ -12,6 +12,7 @@ use App\Http\Controllers\LanguageController;
 
 
 Route::get('/resumes/create', [ResumeController::class, 'create'])->name('resumes.create');
+Route::get('/resumes/{id}', [ResumeController::class, 'show'])->name('resumes.show');
 Route::post('/resumes', [ResumeController::class, 'store'])->name('resume.store');
 Route::get('/', [ResumeController::class, 'index']);
 Route::resource('user', UserController::class);

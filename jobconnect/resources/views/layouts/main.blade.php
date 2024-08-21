@@ -22,13 +22,40 @@
           <div class="collapse navbar-collapse" id="navbar">
 
             <ul class="navbar-nav">
+            @auth
               <li class="nav-item">
                 <a href="/" class="nav-link">Vagas</a>
               </li>
+
+              <li class="nav-item">
+                <a href="/resumes/create" class="nav-link">New curriculo </a>
+              </li>
+              
               <li class="nav-item">
                 <a href="/resumes/show" class="nav-link">Meu curriculo </a>
               </li>
-         
+              @csrf
+              <li class="nav-item">
+                <form action="/logout" method="POST">
+                  <a href="/logout" 
+                    class="nav-link" 
+                    onclick="event.preventDefault();
+                    this.closest('form').submit();">
+                    Sair
+                  </a>
+                </form>
+              </li>
+              @endauth
+              @csrf
+              @guest
+              <li class="nav-item">
+                <a href="/login" class="nav-link">Entrar </a>
+              </li>
+              
+              <li class="nav-item">
+                <a href="/register" class="nav-link">Registar</a>
+              </li>
+              @endguest
             </ul>
           </div>
         </nav>

@@ -22,3 +22,13 @@ Route::resource('professional-experience', ProfessionalExperienceController::cla
 Route::resource('education', EducationController::class);
 Route::resource('skill', SkillController::class);
 Route::resource('language', LanguageController::class);
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+});

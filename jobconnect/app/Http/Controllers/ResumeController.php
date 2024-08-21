@@ -24,9 +24,10 @@ class ResumeController extends Controller{
 
     public function store(Request $request)
     {
-          // Cria o currículo (Resume)
+        // Cria o currículo (Resume)
         $resume = Resume::create([
-            'usuario_id' => 35411
+            'usuario_id' => auth()->id(), // Supondo que o usuário esteja autenticado
+            'titulo' => 'Meu Currículo',  //Depois vou colocar titulo concatenado com o nome MEU CURRICULO GABRIEL
         ]);
 
         // Cria os detalhes pessoais

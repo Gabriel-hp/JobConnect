@@ -4,10 +4,17 @@
 
 @section('content')
 
-    <form action="{{ route('resume.store') }}" method="POST">
+    <form action="{{ route('resumes.store') }}" method="POST">
         @csrf
 
         <!-- Detalhes Pessoais -->
+        @if(isset($resume->id))
+            <p>O ID do currículo é: {{ $resume->id }}</p>
+        @else
+            <p>ID não encontrado!</p>
+        @endif
+
+
         <h3>Detalhes Pessoais</h3>
         <label for="nome_completo">Nome Completo:</label>
         <input type="text" name="nome_completo" id="nome_completo" required>
@@ -33,30 +40,18 @@
         <label for="link_portfolio">Portfólio:</label>
         <input type="url" name="link_portfolio" id="link_portfolio">
 
-        <!-- Experiência Profissional -->
-        <h3>Experiência Profissional</h3>
-        <div id="experience-wrapper">
-            <div class="experience">
-                <label for="cargo[]">Cargo:</label>
-                <input type="text" name="cargo[]" required>
-
-                <label for="empresa[]">Empresa:</label>
-                <input type="text" name="empresa[]" required>
-
-                <label for="data_inicio[]">Data de Início:</label>
-                <input type="date" name="data_inicio[]" required>
-
-                <label for="data_fim[]">Data de Fim:</label>
-                <input type="date" name="data_fim[]">
-
-                <label for="descricao_responsabilidades[]">Descrição das Responsabilidades:</label>
-                <textarea name="descricao_responsabilidades[]" required></textarea>
-
-                <label for="localizacao[]">Localização:</label>
-                <input type="text" name="localizacao[]" required>
+        <!-- Habilidades -->
+        <h3>Habilidades</h3>
+        <div id="skills-wrapper">
+            <div class="skill">
+                <label for="habilidade[]">Habilidade:</label>
+                <input type="text" name="habilidades[]" required>
+                
+                <label for="nivel_habilidade[]">Nível:</label>
+                <input type="text" name="nivel_habilidade[]" required>
             </div>
         </div>
-        <button type="button" onclick="addExperience()">Adicionar Outra Experiência</button>
+        <button type="button" onclick="addSkill()">Adicionar Outra Habilidade</button>
 
         <!-- Educação -->
         <h3>Educação</h3>

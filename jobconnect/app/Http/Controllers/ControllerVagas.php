@@ -8,10 +8,39 @@ use Illuminate\Http\Request;
 class ControllerVagas extends Controller
 {
     // Exibe a lista de vagas
-    public function index()
+    public function index(Request $request)
     {
-        $vagas = Vaga::all();
-        return view('vagas.index', compact('vagas'));
+        $search = $request->query('search');
+        $tipoContratacao = $request->query('tipo_contratacao');
+        $modalidadeTrabalho = $request->query('modalidade_trabalho');
+        $pcd = $request->query('pcd');
+
+        $query = Vaga::query();
+
+        if ($search) {
+            $query->where(function ($q) use ($search) {
+                $q->where('titulo', 'LIKE', "%{$search}%")
+                  ->orWhere('descricao', 'LIKE', "%{$search}%")
+                  ->orWhere('cidade', 'LIKE', "%{$search}%")
+                  ->orWhere('nome_empresa', 'LIKE', "%{$search}%");
+            });
+        }
+
+        if ($tipoContratacao) {
+            $query->where('regime_contratacao', $tipoContratacao);
+        }
+
+        if ($modalidadeTrabalho) {
+            $query->where('modalidade_trabalho', $modalidadeTrabalho);
+        }
+
+        if ($pcd) {
+            $query->where('pcd', $pcd);
+        }
+
+        $vagas = $query->get();
+
+        return view('vagas.index', compact('vagas', 'search', 'tipoContratacao', 'modalidadeTrabalho', 'pcd'));
     }
 
     // Exibe o formulário de criação de uma nova vaga
@@ -49,7 +78,7 @@ class ControllerVagas extends Controller
             'escolaridade' => $request->escolaridade,
             'salario' => $request->salario,
             'beneficios' => $request->beneficios,
-            'admin_id' => 1 //auth()->user()->id, // Assume que o admin está logado
+            'admin_id' => auth()->user()->id, // Assume que o admin está logado
         ]);
 
         // Redireciona para a lista de vagas com uma mensagem de sucesso

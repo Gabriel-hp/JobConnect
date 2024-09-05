@@ -62,16 +62,4 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
-
-
-    public function candidato()
-    {
-        return $this->hasOne(Candidato::class);
-    }
-
-    public function vagas()
-    {
-        return $this->hasMany(Vaga::class, 'admin_id');
-    }
-
 }

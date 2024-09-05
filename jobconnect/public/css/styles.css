@@ -82,6 +82,9 @@
   }
   
   #search-container h1 {
+    background-color: #212121b9;
+    margin: 0 auto;
+    width: 550px;
     color: #F2A340;
     margin-bottom: 30px;
     font-weight: 900;
@@ -342,4 +345,37 @@ button[type="button"]:hover {
   button[type="submit"], button[type="button"] {
       font-size: 16px;
   }
+}
+.card {
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+  background-color: #007bff;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  border-radius: 10px 10px 0 0;
+}
+
+.card-footer {
+  background-color: #f8f9fa;
+  padding: 10px;
+  border-radius: 0 0 10px 10px;
+}
+
+.btn-success {
+  background-color: #28a745;
+  border-color: #28a745;
+  font-weight: bold;
+}
+
+.btn-success:hover {
+  background-color: #218838;
+  border-color: #1e7e34;
 }

@@ -58,7 +58,7 @@ class ControllerCandidato extends Controller
             } else {
                 return back()->withErrors(['user' => 'Você precisa estar logado para se candidatar.']);
             }
-        }
+        }   
     
 
     

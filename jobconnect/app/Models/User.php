@@ -50,6 +50,17 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
+    public function isAdmin()
+        {
+            return $this->role === 'admin';
+        }
+
+    public function isCandidato()
+        {
+            return $this->role === 'candidato';
+        }
+
+
     /**
      * Get the attributes that should be cast.
      *

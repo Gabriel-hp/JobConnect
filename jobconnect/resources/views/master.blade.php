@@ -11,16 +11,39 @@
 integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
   <title>JobConnect</title>
 </head>
-<nav class="navbar navbar-expand-lg navbar-light bg-dark">
-    <div class="container-fluid">
-      <a class="navbar-brand h1 text-light" href={{ route('vagas.index') }}>JobConnect</a>
-      <div class="justify-end ">
-        <div class="col ">
-          <a class="btn btn-sm btn-success" href="/vagas/create">Criar uma nova vaga</a>
-        </div>
-      </div>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand h1 text-light" href="{{ route('vagas.index') }}">JobConnect</a>
+    <div class="collapse navbar-collapse justify-content-end">
+      <ul class="navbar-nav ml-auto align-items-center">
+        @guest
+        <li class="nav-item">
+          <a href="/login" class="nav-link text-light">Entrar</a>
+        </li>
+        <li class="nav-item">
+          <a href="/register" class="nav-link text-light">Cadastrar</a>
+        </li>
+        @endguest
+        @auth
+        <li class="nav-item">
+          <form action="/logout" method="POST" class="m-0 p-0 bg-dark">
+            @csrf
+            <a href="/logout" 
+              class="nav-link text-light" 
+              onclick="event.preventDefault(); this.closest('form').submit();">
+              Sair
+            </a>
+          </form>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-sm btn-success ml-3" href="/vagas/create">Criar uma nova vaga</a>
+        </li>
+        @endauth
+      </ul>
     </div>
-  </nav>
+  </div>
+</nav>
+
 <body>
     <div class="container">
         @yield('content')

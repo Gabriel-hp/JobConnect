@@ -44,7 +44,7 @@
                     <label for="modalidade_home_office">Home Office</label>
                 </div>
                 <div>
-                    <input type="radio" id="modalidade_híbrido" name="modalidade_trabalho" value="Híbrido" {{ request()->query('modalidade_trabalho') == 'Híbrido' ? 'checked' : '' }}>
+                    <input type="radio" id="modalidade_híbrido" name="modalidade_trabalho" value="Híbrida" {{ request()->query('modalidade_trabalho') == 'Híbrida' ? 'checked' : '' }}>
                     <label for="modalidade_híbrido">Híbrido</label>
                 </div>
                 <!-- Adicione outras modalidades conforme necessário -->
@@ -89,6 +89,7 @@
                     <h5 class="card-title">{{ $vaga->titulo }}</h5>
                 </div>
                 <div class="card-body">
+                    <p class="card-text"><strong>Área:</strong> {{ $vaga->area }}</p>
                     <p class="card-text"><strong>Descrição:</strong> {{ $vaga->descricao }}</p>
                     <p class="card-text"><strong>Cidade:</strong> {{ $vaga->cidade }}</p>
                     <p class="card-text"><strong>Empresa:</strong> {{ $vaga->nome_empresa }}</p>
@@ -98,6 +99,8 @@
                     <p class="card-text"><strong>Escolaridade:</strong> {{ $vaga->escolaridade }}</p>
                     <p class="card-text"><strong>Salário:</strong> {{ $vaga->salario }}</p>
                     <p class="card-text"><strong>Benefícios:</strong> {{ $vaga->beneficios }}</p>
+                    <p class="card-text"><strong>Data postagem:</strong> {{ $vaga->data_postagem }}</p>
+                    <p class="card-text"><strong>Status:</strong> {{ $vaga->status }}</p>
                 </div>
                 <div class="card-footer text-center" style="border-radius: 0 0 10px 10px;">
                     <a href="#" class="btn btn-success" style="width: 100%;">Candidatar-me</a>

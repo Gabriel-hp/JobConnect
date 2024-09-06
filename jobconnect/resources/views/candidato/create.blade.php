@@ -1,4 +1,3 @@
-<!-- resources/views/candidatos/form.blade.php -->
 @extends('master')
 
 @section('content')
@@ -14,9 +13,8 @@
         </div>
     @endif
 
-    <form action="{{ route ('candidato.update') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ isset($candidato) ? route('candidatos.update', $candidato->id) : route('candidatos.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
-        
         @if(isset($candidato))
             @method('PUT')
         @endif
@@ -41,6 +39,7 @@
             <input type="text" class="form-control" id="escolaridade" name="escolaridade" value="{{ old('escolaridade', $candidato->escolaridade ?? '') }}" required>
         </div>
 
+       
 
         <div class="mb-3">
             <label for="curriculo" class="form-label">Currículo</label>

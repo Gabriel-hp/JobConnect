@@ -14,12 +14,14 @@ return new class extends Migration
         Schema::create('vagas', function (Blueprint $table) {
             $table->id();
             $table->string('titulo');
+            
             $table->text('descricao');
             $table->string('cidade');
             $table->string('nome_empresa');
             $table->enum('regime_contratacao', ['PJ', 'CLT']);
             $table->boolean('pcd')->default(false); // Vaga exclusiva para PCD
-            $table->enum('modalidade_trabalho', ['Home Office', 'Presencial']);
+            $table->enum('modalidade_trabalho', ['Home Office', 'Presencial', 'Híbrida']);
+            $table->enum('area', ['Tecnologia', 'Contabil', 'Serviço gerais', 'Industria', 'Saude', 'Educacao', 'Administrativo','outros']);
             $table->timestamp('data_postagem')->useCurrent(); // Define a data de postagem como atual
             $table->string('escolaridade');
             $table->decimal('salario', 8, 2)->nullable(); // Opcional

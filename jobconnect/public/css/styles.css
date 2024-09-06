@@ -379,3 +379,35 @@ button[type="button"]:hover {
   background-color: #218838;
   border-color: #1e7e34;
 }
+
+/*Deixar o show curriculo lindo*/
+.skills-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.skill-box {
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #f8f9fa;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-right: 10px;
+}
+
+.card-header {
+  background-color: #007bff;
+  color: #fff;
+  padding: 20px;
+  border-radius: 5px 5px 0 0;
+}
+
+.card-body {
+  padding: 30px;
+}
+
+.card-footer {
+  background-color: #f8f9fa;
+  border-radius: 0 0 5px 5px;
+  padding: 20px;
+}

@@ -19,6 +19,7 @@ class Vaga extends Model
         'regime_contratacao',
         'pcd',
         'modalidade_trabalho',
+        'area',
         'escolaridade',
         'salario',
         'beneficios',

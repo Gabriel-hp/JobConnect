@@ -28,7 +28,7 @@ Route::delete('/vagas/{vagas}', ControllerVagas::class .'@destroy')->name('vagas
 Route::resource('candidatos', ControllerCandidato::class);
 
 // pagina inicial do candidato
-Route::get('/inicio', ControllerCandidato::class .'@index')->name('candidato.index');
+Route::get('/perfil', ControllerCandidato::class .'@index')->name('candidato.index');
 
 // página de criação de vagas
 Route::get('/candidato/create', ControllerCandidato::class . '@create')->name('candidato.create');

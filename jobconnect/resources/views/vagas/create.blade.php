@@ -22,6 +22,19 @@
             <label for="titulo">Título da Vaga</label>
             <input type="text" name="titulo" class="form-control" id="titulo" value="{{ old('titulo') }}" required>
         </div>
+        <div class="form-group">
+            <label for="area">Área</label>
+            <select name="area" class="form-control" id="area" required>
+                <option value="Tecnologia" {{ old('area') == 'Tecnologia' ? 'selected' : '' }}>Tecnologia</option>
+                <option value="Contabil" {{ old('area') == 'Contabil' ? 'selected' : '' }}>Contábil</option>
+                <option value="Serviço gerais" {{ old('area') == 'Serviço gerais' ? 'selected' : '' }}>Serviço gerais</option>
+                <option value="Industria" {{ old('area') == 'Industria' ? 'selected' : '' }}>Indústria</option>
+                <option value="Saude" {{ old('area') == 'Saude' ? 'selected' : '' }}>Saúde</option>
+                <option value="Educacao" {{ old('area') == 'Educacao' ? 'selected' : '' }}>Educação</option>
+                <option value="Administrativo" {{ old('area') == 'Administrativo' ? 'selected' : '' }}>Administrativo</option>
+                <option value="outros" {{ old('area') == 'outros' ? 'selected' : '' }}>Outros</option>
+            </select>
+        </div>
 
         <div class="form-group">
             <label for="descricao">Descrição</label>
@@ -59,7 +72,7 @@
             <select name="modalidade_trabalho" class="form-control" id="modalidade_trabalho" required>
             <option value="Presencial" {{ old('modalidade_trabalho') == 'Presencial' ? 'selected' : '' }}>Presencial</option>
                 <option value="Home Office" {{ old('modalidade_trabalho') == 'Home Office' ? 'selected' : '' }}>Home Office</option>
-                <option value="Híbrido" {{ old('modalidade_trabalho') == 'Híbrido' ? 'selected' : '' }}>Híbrido</option>
+                <option value="Híbrida" {{ old('modalidade_trabalho') == 'Híbrida' ? 'selected' : '' }}>Híbrido</option>
             </select>
         </div>
 

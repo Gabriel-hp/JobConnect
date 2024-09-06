@@ -1,76 +1,57 @@
 @extends('master')
 
 @section('content')
+    <!-- Exibe erros de validação, se houver -->
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 
-<div class="container mt-5">
-    <h2>Editar Vaga</h2>
-    
-    <form action="{{ route('vagas.update', $vaga->id) }}" method="POST">
+    <!-- Formulário de edição de candidato -->
+    <form action="{{ route('candidatos.update', $candidato->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
 
         <div class="mb-3">
-            <label for="titulo" class="form-label">Título</label>
-            <input type="text" class="form-control" id="titulo" name="titulo" value="{{ old('titulo', $vaga->titulo) }}" required>
+            <label for="nome" class="form-label">Nome</label>
+            <input type="text" class="form-control" id="nome" name="nome" value="{{ old('nome', $candidato->nome ?? '') }}" required maxlength="255">
         </div>
 
+
         <div class="mb-3">
-            <label for="descricao" class="form-label">Descrição</label>
-            <textarea class="form-control" id="descricao" name="descricao" rows="3" required>{{ old('descricao', $vaga->descricao) }}</textarea>
+            <label for="telefone" class="form-label">Telefone</label>
+            <input type="text" class="form-control" id="telefone" name="telefone" value="{{ old('telefone', $candidato->telefone ?? '') }}" maxlength="20">
         </div>
 
         <div class="mb-3">
             <label for="cidade" class="form-label">Cidade</label>
-            <input type="text" class="form-control" id="cidade" name="cidade" value="{{ old('cidade', $vaga->cidade) }}" required>
+            <input type="text" class="form-control" id="cidade" name="cidade" value="{{ old('cidade', $candidato->cidade ?? '') }}" required maxlength="255">
         </div>
 
         <div class="mb-3">
-            <label for="nome_empresa" class="form-label">Nome da Empresa</label>
-            <input type="text" class="form-control" id="nome_empresa" name="nome_empresa" value="{{ old('nome_empresa', $vaga->nome_empresa) }}" required>
-        </div>
-
-        <div class="mb-3">
-            <label for="regime_contratacao" class="form-label">Regime de Contratação</label>
-            <select class="form-control" id="regime_contratacao" name="regime_contratacao" required>
-                <option value="CLT" {{ old('regime_contratacao', $vaga->regime_contratacao) == 'CLT' ? 'selected' : '' }}>CLT</option>
-                <option value="PJ" {{ old('regime_contratacao', $vaga->regime_contratacao) == 'PJ' ? 'selected' : '' }}>PJ</option>
-            </select>
-        </div>
-
-        <div class="mb-3">
-            <label for="pcd" class="form-label">PCD</label>
-            <select class="form-control" id="pcd" name="pcd" required>
-                <option value="0" {{ old('pcd', $vaga->pcd) == '0' ? 'selected' : '' }}>Não</option>
-                <option value="1" {{ old('pcd', $vaga->pcd) == '1' ? 'selected' : '' }}>Sim</option>
-            </select>
-        </div>
-
-        <div class="mb-3">
-            <label for="modalidade_trabalho" class="form-label">Modalidade de Trabalho</label>
-            <select class="form-control" id="modalidade_trabalho" name="modalidade_trabalho" required>
-                <option value="Presencial" {{ old('modalidade_trabalho', $vaga->modalidade_trabalho) == 'Presencial' ? 'selected' : '' }}>Presencial</option>
-                <option value="Home Office" {{ old('modalidade_trabalho', $vaga->modalidade_trabalho) == 'Home Office' ? 'selected' : '' }}>Home Office</option>
-                <option value="Híbrido" {{ old('modalidade_trabalho', $vaga->modalidade_trabalho) == 'Híbrido' ? 'selected' : '' }}>Híbrido</option>
-            </select>
+            <label for="experiencia" class="form-label">Experiência</label>
+            <textarea class="form-control" id="experiencia" name="experiencia" required>{{ old('experiencia', $candidato->experiencia ?? '') }}</textarea>
         </div>
 
         <div class="mb-3">
             <label for="escolaridade" class="form-label">Escolaridade</label>
-            <input type="text" class="form-control" id="escolaridade" name="escolaridade" value="{{ old('escolaridade', $vaga->escolaridade) }}" required>
+            <input type="text" class="form-control" id="escolaridade" name="escolaridade" value="{{ old('escolaridade', $candidato->escolaridade ?? '') }}" required>
         </div>
+
 
         <div class="mb-3">
-            <label for="salario" class="form-label">Salário</label>
-            <input type="text" class="form-control" id="salario" name="salario" value="{{ old('salario', $vaga->salario) }}">
+            <label for="curriculo" class="form-label">Currículo</label>
+            <input type="file" class="form-control" id="curriculo" name="curriculo">
+            @if(isset($candidato) && $candidato->curriculo)
+                <small class="form-text text-muted">Currículo atual: {{ $candidato->curriculo }}</small>
+            @endif
         </div>
 
-        <div class="mb-3">
-            <label for="beneficios" class="form-label">Benefícios</label>
-            <textarea class="form-control" id="beneficios" name="beneficios" rows="3" required>{{ old('beneficios', $vaga->beneficios) }}</textarea>
-        </div>
-
-        <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+        <button type="submit" class="btn btn-success">Salvar Alterações</button>
     </form>
-</div>
-
 @endsection

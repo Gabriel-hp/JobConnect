@@ -11,14 +11,14 @@ class Candidato extends Model
 
     protected $fillable = [
         'telefone',
-        'cidade',
+        'endereco',
         'experiencia',
         'escolaridade',
         'curriculo'
     ];
 
-    public function vaga()
+    public function user()
     {
-        return $this->belongsTo(Vaga::class);
+        return $this->belongsTo(User::class);
     }
 }

@@ -22,7 +22,9 @@ Route::get('/', [ControllerVagas::class, 'index'])->name('vagas.index');
       Route::put('/vagas/{vagas}', [ControllerVagas::class, 'update'])->name('vagas.update');
       // excluir as vagas
       Route::delete('/vagas/{vagas}', [ControllerVagas::class, 'destroy'])->name('vagas.destroy');
-  
+      // mostrar candidaturas
+      Route::get('/vagas/{vaga}/candidaturas', [ControllerVagas::class, 'mostrarCandidaturas'])->name('vagas.candidaturas');
+
 
     
     // Perfil do candidato
@@ -40,12 +42,13 @@ Route::get('/', [ControllerVagas::class, 'index'])->name('vagas.index');
     Route::put('/candidatos/{candidato}', [ControllerCandidato::class, 'update'])->name('candidatos.update');
     // excluir candidato
     Route::delete('/candidatos/{candidato}', [ControllerCandidato::class, 'destroy'])->name('candidatos.destroy');
-    // Mostra candidaturas
-    Route::delete('/candidatos/{candidato}', [ControllerCandidato::class, 'destroy'])->name('candidatos.destroy');
+
 
 
 
 // candidatura 
+
+Route::post('/vagas/join/{id}', [ControllerVagas::class, 'join'])->name('vagas.join');
 
 
 

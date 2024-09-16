@@ -8,6 +8,7 @@ use App\Models\Candidatura;
 
 class ControllerVagas extends Controller
 {
+
     // Exibe a lista de vagas
     public function index(Request $request)
     {
@@ -127,6 +128,36 @@ class ControllerVagas extends Controller
     {
         $vaga->delete();
         return redirect()->route('vagas.index')->with('success', 'Vaga excluída com sucesso!');
+    }
+
+
+    //candidata usuario a vaga
+    public function join($id)
+    {
+        $user = auth()->user();
+
+        if (!$user->candidato) {
+            return redirect('/perfil')->with('msg', 'Você precisa completar seu perfil de candidato.');
+        }
+
+        $vaga = Vaga::findOrFail($id);
+
+        // Verifica se já existe uma candidatura para evitar duplicidade
+        $existingCandidatura = Candidatura::where('candidato_id', $user->candidato->id)
+                                          ->where('vaga_id', $id)
+                                          ->first();
+
+        if ($existingCandidatura) {
+            return redirect('/perfil')->with('msg', 'Você já se candidatou a esta vaga.');
+        }
+
+        // Cria uma nova candidatura
+        Candidatura::create([
+            'candidato_id' => $user->candidato->id,
+            'vaga_id' => $id,
+        ]);
+
+        return redirect('/perfil')->with('msg', 'Você se candidatou a esta vaga: ' . $vaga->title);
     }
 
 }

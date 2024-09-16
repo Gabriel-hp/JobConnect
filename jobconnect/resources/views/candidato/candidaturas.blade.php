@@ -17,6 +17,7 @@
                         <p class="card-text"><strong>Área:</strong> {{ $candidatura->vaga->area }}</p>
                         <p class="card-text"><strong>Cidade:</strong> {{ $candidatura->vaga->cidade }}</p>
                         <p class="card-text"><strong>Empresa:</strong> {{ $candidatura->vaga->nome_empresa }}</p>
+                        <p class="card-text"><strong>status:</strong> {{ $candidatura->status}}</p>
                         <p class="card-text"><small class="text-muted">Data da Candidatura: {{ $candidatura->created_at->format('d/m/Y H:i') }}</small></p>
                     </div>
                 </div>

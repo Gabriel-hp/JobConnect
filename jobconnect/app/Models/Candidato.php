@@ -11,7 +11,7 @@ class Candidato extends Model
 
     // Defina os campos que podem ser preenchidos em massa
     protected $fillable = [
-        'user_id',        // Inclua o user_id para garantir que ele possa ser atribuído em massa
+        'user_id',        
         'telefone',
         'endereco',
         'experiencia',

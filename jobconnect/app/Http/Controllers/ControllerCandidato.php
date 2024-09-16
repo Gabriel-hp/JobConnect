@@ -60,7 +60,7 @@ class ControllerCandidato extends Controller
             // Verifica se o usuário está autenticado
             if (auth()->check()) {
                 Candidato::create([
-                    'user_id' => auth()->user()->id, // Correção aqui
+                    'user_id' => auth()->user()->id, 
                     'telefone' => $request->telefone,
                     'endereco' => $request->endereco,
                     'experiencia' => $request->experiencia,

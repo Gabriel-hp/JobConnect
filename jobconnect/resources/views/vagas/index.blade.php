@@ -103,8 +103,12 @@
                     <p class="card-text"><strong>Status:</strong> {{ $vaga->status }}</p>
                 </div>
                 <div class="card-footer text-center" style="border-radius: 0 0 10px 10px;">
-                    <a href="#" class="btn btn-success" style="width: 100%;">Candidatar-me</a>
+                    <form action="{{ route('vagas.join', $vaga->id) }}" method="POST">
+                        @csrf
+                        <button type="submit" class="btn btn-success">Candidatar-se</button>
+                    </form>
                 </div>
+
             </div>
         </div>
         @endforeach

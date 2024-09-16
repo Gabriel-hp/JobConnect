@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Vaga;    
 use Illuminate\Http\Request;
+use App\Models\Candidatura;
 
 class ControllerVagas extends Controller
 {
@@ -127,4 +128,5 @@ class ControllerVagas extends Controller
         $vaga->delete();
         return redirect()->route('vagas.index')->with('success', 'Vaga excluída com sucesso!');
     }
+
 }

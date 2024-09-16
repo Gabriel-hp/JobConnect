@@ -12,8 +12,15 @@
             </ul>
         </div>
     @endif
+    
+        @if (auth()->check())
+            <p>Seu ID é: {{ auth()->user()->id }}</p>
+        @else
+            <p>Você não está autenticado.</p>
+        @endif
 
-    <form action="{{ isset($candidato) ? route('candidatos.update', $candidato->id) : route('candidatos.store') }}" method="POST" enctype="multipart/form-data">
+
+    <form action="{{ isset($candidato) ? route('candidatos.store', $candidato->id) : route('candidatos.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         @if(isset($candidato))
             @method('PUT')

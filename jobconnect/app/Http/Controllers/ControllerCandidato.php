@@ -11,9 +11,24 @@ class ControllerCandidato extends Controller
     // Exibe a lista de candidatos
     public function index()
     {
-        $candidatos = Candidato::all();
+        // Buscar o candidato associado ao usuário autenticado
+        $userId = auth()->id(); // Obtém o ID do usuário autenticado
+    
+        // Busca o candidato relacionado ao usuário autenticado
+        $candidatos = Candidato::where('user_id', $userId)->get();
+        
+    
+        // Retorna a view com os candidatos filtrados
         return view('candidato.index', compact('candidatos'));
     }
+
+    public function candidatura()
+    {
+        // Retorna a view com os candidatos filtrados
+        return view('candidato.index', compact('candidatos'));
+    }
+    
+    
 
     // Exibe o formulário de criação de um novo candidato
     public function create()
@@ -45,7 +60,7 @@ class ControllerCandidato extends Controller
             // Verifica se o usuário está autenticado
             if (auth()->check()) {
                 Candidato::create([
-                    'user_id' => auth()->id(), // Captura o ID do usuário logado
+                    'user_id' => auth()->user()->id, // Correção aqui
                     'telefone' => $request->telefone,
                     'endereco' => $request->endereco,
                     'experiencia' => $request->experiencia,
@@ -104,5 +119,18 @@ class ControllerCandidato extends Controller
         $candidato->delete();
 
         return redirect()->route('candidato.index')->with('success', 'Candidato removido com sucesso!');
+    }
+
+    public function candidaturas()
+    {
+        $user = auth()->user();
+
+        // Recupere o candidato associado ao usuário
+        $candidato = $user->candidato;
+
+        // Recupere todas as candidaturas deste candidato
+        $candidaturas = $candidato->candidaturas()->with('vaga')->get();
+
+        return view('candidato.candidaturas', ['candidaturas' => $candidaturas]);
     }
 }

@@ -4,8 +4,8 @@
 
 @section('content')
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <h1>Banco de Candidatos</h1>
-        <a href="{{ route('candidatos.create') }}" class="btn btn-primary">Novo Candidato</a>
+        <h1>Meu curriculo</h1>
+        <a href="{{ route('candidatos.create') }}" class="btn btn-primary">Completar perfil</a>
     </div>
 
     @if (session('success'))
@@ -25,14 +25,20 @@
                             <h5 class="card-title">{{ $candidato->user->name }}</h5>
                             <p class="card-text"><strong>Email:</strong> {{ $candidato->user->email }}</p>
                             <p class="card-text"><strong>Escolaridade:</strong> {{ $candidato->escolaridade }}</p>
+                            <p class="card-text"><strong>Telefone</strong>{{ $candidato->telefone }}</p>
+                            <p class="card-text"><strong>Endereço</strong>{{ $candidato->endereco }}</p>
+                            <p class="card-text"><strong>Escolaridade</strong>{{ $candidato->escolaridade }}</p>
+                            <p class="card-text"><strong>Experiencia</strong>{{ $candidato->experiencia }}</p>
+                            <p class="card-text"><strong>curriculo</strong>{{ $candidato->curriculo }}</p>
+                            <p class="card-text"><strong>Atualizado em</strong>{{ $candidato->updated_at }}</p>
+
                         </div>
-                        <div class="card-footer d-flex justify-content-around">
-                            <a href="{{ route('candidatos.show', $candidato->id) }}" class="btn btn-info btn-sm">Ver</a>
+                        <div class="">
                             <a href="{{ route('candidatos.edit', $candidato->id) }}" class="btn btn-primary btn-sm">Editar</a>
                             <form action="{{ route('candidatos.destroy', $candidato->id) }}" method="POST" class="d-inline">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Tem certeza que deseja excluir este candidato?')">Excluir</button>
+                                <button type="submit" class="btn btn-danger" onclick="return confirm('Tem certeza que deseja excluir este candidato?')">Excluir</button>
                             </form>
                         </div>
                     </div>

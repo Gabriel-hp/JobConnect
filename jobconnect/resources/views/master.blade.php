@@ -26,6 +26,19 @@ integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6
         @endguest
         @auth
         <li class="nav-item">
+                <a href="/" class="nav-link">Vagas</a>
+              </li>
+              
+              <li class="nav-item">
+                <a href="/perfil" class="nav-link">Meu curriculo </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="/candidaturas" class="nav-link">Candidaturas </a>
+              </li>
+        
+        <li class="nav-item">
+          
           <form action="/logout" method="POST" class="m-0 p-0 bg-dark">
             @csrf
             <a href="/logout" 
@@ -35,9 +48,8 @@ integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6
             </a>
           </form>
         </li>
-        <li class="nav-item">
-          <a class="btn btn-sm btn-success ml-3" href="/vagas/create">Criar uma nova vaga</a>
-        </li>
+
+    
         @endauth
       </ul>
     </div>

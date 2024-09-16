@@ -25,8 +25,8 @@ class Vaga extends Model
         'beneficios',
         'admin_id',
     ];
-    public function candidaturas()
+    public function candidatos()
     {
-        return $this->hasMany(Candidatura::class);
+        return $this->belongsToMany('App\Models\Candidato', 'candidato_vaga', 'vaga_id', 'candidato_id');
     }
 }

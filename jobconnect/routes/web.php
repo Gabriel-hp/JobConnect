@@ -9,7 +9,6 @@ use App\Http\Controllers\ControllerCandidato;
 Route::get('/', [ControllerVagas::class, 'index'])->name('vagas.index');
 
 // Rotas protegidas para Admin
-Route::middleware(['auth', 'admin'])->group(function () {
 
       // página de criação de vagas
       Route::get('/vagas/create', [ControllerVagas::class, 'create'])->name('vagas.create');
@@ -24,26 +23,30 @@ Route::middleware(['auth', 'admin'])->group(function () {
       // excluir as vagas
       Route::delete('/vagas/{vagas}', [ControllerVagas::class, 'destroy'])->name('vagas.destroy');
   
-});
 
-// Rotas protegidas para Candidato
-Route::middleware(['auth', 'candidato'])->group(function () {
     
     // Perfil do candidato
-    Route::get('/perfil', [ControllerCandidato::class, 'index'])->name('candidato.index');
+    Route::get('/perfil', [ControllerCandidato::class, 'index'])->name('candidatos.index');
     
     // página de criação de candidato
-    Route::get('/candidato/create', [ControllerCandidato::class, 'create'])->name('candidato.create');
+    Route::get('/candidatos/create', [ControllerCandidato::class, 'create'])->name('candidatos.create');
     // adicionar candidato ao banco de dados
-    Route::post('/candidato', [ControllerCandidato::class, 'store'])->name('candidato.store');
+    Route::post('/candidatos', [ControllerCandidato::class, 'store'])->name('candidatos.store');
     // mostrar candidato
-    Route::get('/candidato/{post}', [ControllerCandidato::class, 'show'])->name('candidato.show');
+    Route::get('/candidatos/{post}', [ControllerCandidato::class, 'show'])->name('candidatos.show');
     // retorna o formulário de edição de candidato
-    Route::get('/candidato/{candidato}/edit', [ControllerCandidato::class, 'edit'])->name('candidato.edit');
+    Route::get('/candidatos/{candidato}/edit', [ControllerCandidato::class, 'edit'])->name('candidatos.edit');
     // atualizar candidato
-    Route::put('/candidato/{candidato}', [ControllerCandidato::class, 'update'])->name('candidato.update');
+    Route::put('/candidatos/{candidato}', [ControllerCandidato::class, 'update'])->name('candidatos.update');
     // excluir candidato
-    Route::delete('/candidato/{candidato}', [ControllerCandidato::class, 'destroy'])->name('candidato.destroy');
+    Route::delete('/candidatos/{candidato}', [ControllerCandidato::class, 'destroy'])->name('candidatos.destroy');
+    // Mostra candidaturas
+    Route::delete('/candidatos/{candidato}', [ControllerCandidato::class, 'destroy'])->name('candidatos.destroy');
 
 
-});
+
+// candidatura 
+
+
+
+Route::get('/candidaturas', [ControllerCandidato::class, 'candidaturas'])->name('candidato.candidaturas');

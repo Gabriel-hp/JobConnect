@@ -13,7 +13,6 @@ class AdminMiddleware
             return $next($request);
         }
 
-        return redirect('/'); // ou outra rota apropriada
+        return redirect('/'); // ou redirecionar para uma página de acesso negado
     }
-
 }

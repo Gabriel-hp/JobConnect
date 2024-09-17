@@ -51,6 +51,10 @@ class ControllerVagas extends Controller
         return view('vagas.create');
     }
 
+  
+
+    
+
     // Armazena uma nova vaga no banco de dados
     public function store(Request $request)
     {
@@ -93,6 +97,11 @@ class ControllerVagas extends Controller
     public function show(Vaga $vaga)
     {
         return view('vagas.show', compact('vaga'));
+    }
+
+    public function vagasadm(Vaga $vaga)
+    {
+        return view('vagas.vagasadm', compact('vaga'));
     }
 
     // Exibe o formulário de edição de uma vaga
@@ -159,5 +168,21 @@ class ControllerVagas extends Controller
 
         return redirect('/perfil')->with('msg', 'Você se candidatou a esta vaga: ' . $vaga->title);
     }
+
+        //mostra candidaturas
+        public function mostrarCandidaturas($vagaId)
+        {
+            // Encontre a vaga pelo ID
+            $vaga = Vaga::findOrFail($vagaId);
+
+            // Carregue as candidaturas relacionadas a esta vaga
+            $candidaturas = $vaga->candidaturas()->with('usuario')->get(); // Assuming there's a relationship between Vaga and Candidaturas
+
+            // Retorne a view com as candidaturas
+            return view('vagas.candidaturas', compact('vaga', 'candidaturas'));
+        }
+
+        
+
 
 }

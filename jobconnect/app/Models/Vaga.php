@@ -29,4 +29,10 @@ class Vaga extends Model
     {
         return $this->belongsToMany('App\Models\Candidato', 'candidato_vaga', 'vaga_id', 'candidato_id');
     }
+
+    public function candidaturas()
+    {
+        return $this->hasMany(Candidatura::class);
+    }
+    
 }

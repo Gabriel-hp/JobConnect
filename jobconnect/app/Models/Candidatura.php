@@ -16,13 +16,23 @@ class Candidatura extends Model
         // Outros campos conforme necessário
     ];
 
-    public function candidato()
-    {
-        return $this->belongsTo('App\Models\Candidato', 'candidato_id');
-    }
 
     public function vaga()
     {
         return $this->belongsTo('App\Models\Vaga', 'vaga_id');
     }
+
+    public function usuario()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function candidato()
+{
+    return $this->belongsTo(User::class, 'candidato_id');
+}
+
+    
+
+
 }

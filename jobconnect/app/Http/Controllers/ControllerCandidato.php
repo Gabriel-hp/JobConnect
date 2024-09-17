@@ -133,4 +133,7 @@ class ControllerCandidato extends Controller
 
         return view('candidato.candidaturas', ['candidaturas' => $candidaturas]);
     }
+
+   
+
 }

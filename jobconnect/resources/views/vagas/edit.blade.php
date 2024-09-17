@@ -1,4 +1,4 @@
-@extends('master')
+@extends('adm')
 
 @section('content')
 
@@ -66,7 +66,15 @@
 
         <div class="mb-3">
             <label for="beneficios" class="form-label">Benefícios</label>
-            <textarea class="form-control" id="beneficios" name="beneficios" rows="3" required>{{ old('beneficios', $vaga->beneficios) }}</textarea>
+            <textarea class="form-control" id="beneficios" name="beneficios" rows="3" >{{ old('beneficios', $vaga->beneficios) }}</textarea>
+        </div>
+
+        <div class="mb-3">
+            <label for="status" class="form-label">Status</label>
+            <select class="form-control" id="status" name="status" required>
+                <option value="aberta" {{ old('status', $vaga->status) == 'aberta' ? 'selected' : '' }}>Aberta</option>
+                <option value="fechada" {{ old('status', $vaga->status) == 'fechada' ? 'selected' : '' }}>Fechada</option>
+            </select>
         </div>
 
         <button type="submit" class="btn btn-primary">Salvar Alterações</button>

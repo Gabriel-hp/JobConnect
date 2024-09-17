@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ControllerVagas;
 use App\Http\Controllers\ControllerCandidato;
+use App\Http\Controllers\VagasAdmController;
 
 
 // Rota pública: página inicial de vagas
@@ -24,7 +25,15 @@ Route::get('/', [ControllerVagas::class, 'index'])->name('vagas.index');
       Route::delete('/vagas/{vagas}', [ControllerVagas::class, 'destroy'])->name('vagas.destroy');
       // mostrar candidaturas
       Route::get('/vagas/{vaga}/candidaturas', [ControllerVagas::class, 'mostrarCandidaturas'])->name('vagas.candidaturas');
+      
 
+      // admin visualizar rotas 
+
+      Route::get('/vagasadm', [VagasAdmController::class, 'index'])->name('vagasadm.index');
+      Route::get('/vagasadm/{vaga}/edit', [VagasAdmController::class, 'edit'])->name('vagasadm.edit');
+      Route::delete('/vagasadm/{vaga}', [VagasAdmController::class, 'destroy'])->name('vagasadm.destroy');
+      Route::get('/vagasadm/{vaga}/candidatos', [VagasAdmController::class, 'candidatos'])->name('vagasadm.candidatos');
+      
 
     
     // Perfil do candidato
@@ -42,7 +51,7 @@ Route::get('/', [ControllerVagas::class, 'index'])->name('vagas.index');
     Route::put('/candidatos/{candidato}', [ControllerCandidato::class, 'update'])->name('candidatos.update');
     // excluir candidato
     Route::delete('/candidatos/{candidato}', [ControllerCandidato::class, 'destroy'])->name('candidatos.destroy');
-
+  
 
 
 

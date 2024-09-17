@@ -16,7 +16,8 @@ Route::get('/', [ControllerVagas::class, 'index'])->name('vagas.index');
       // adicionar vagas ao banco de dados
       Route::post('/vagas', [ControllerVagas::class, 'store'])->name('vagas.store');
       // mostrar as vagas
-      Route::get('/vagas/{post}', [ControllerVagas::class, 'show'])->name('vagas.show');
+      Route::get('/vagas/{vaga}', [ControllerVagas::class, 'show'])->name('vagas.show');
+
       // retorna o formulário de edição de vagas
       Route::get('/vagas/{vagas}/edit', [ControllerVagas::class, 'edit'])->name('vagas.edit');
       // atualizar as vagas

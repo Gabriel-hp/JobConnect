@@ -85,32 +85,38 @@
         @foreach ($vagas as $vaga)
         <div class="col-md-4 mb-4">
             <div class="card shadow-sm" style="border-radius: 10px;">
-                <div class="card-header bg-primary text-white" style="border-radius: 10px 10px 0 0;">
-                    <h5 class="card-title">{{ $vaga->titulo }}</h5>
-                </div>
-                <div class="card-body">
-                    <p class="card-text"><strong>Área:</strong> {{ $vaga->area }}</p>
-                    <p class="card-text"><strong>Descrição:</strong> {{ $vaga->descricao }}</p>
-                    <p class="card-text"><strong>Cidade:</strong> {{ $vaga->cidade }}</p>
-                    <p class="card-text"><strong>Empresa:</strong> {{ $vaga->nome_empresa }}</p>
-                    <p class="card-text"><strong>Tipo de Contratação:</strong> {{ $vaga->regime_contratacao }}</p>
-                    <p class="card-text"><strong>Modalidade:</strong> {{ $vaga->modalidade_trabalho }}</p>
-                    <p class="card-text"><strong>PCD:</strong> {{ $vaga->pcd == 1 ? 'Sim' : 'Não' }}</p>
-                    <p class="card-text"><strong>Escolaridade:</strong> {{ $vaga->escolaridade }}</p>
-                    <p class="card-text"><strong>Salário:</strong> {{ $vaga->salario }}</p>
-                    <p class="card-text"><strong>Benefícios:</strong> {{ $vaga->beneficios }}</p>
-                    <p class="card-text"><strong>Data postagem:</strong> {{ $vaga->data_postagem }}</p>
-                    <p class="card-text"><strong>Status:</strong> {{ $vaga->status }}</p>
-                </div>
-                <div class="card-footer text-center" style="border-radius: 0 0 10px 10px;">
-                    <form action="{{ route('vagas.join', $vaga->id) }}" method="POST">
-                        @csrf
-                        <button type="submit" class="btn btn-success">Candidatar-se</button>
-                    </form>
+                <!-- Logo e título -->
+                <div class="d-flex align-items-center p-3">
+                    <img src="../img/logo.png" alt="Lojas Torra" class="me-2" style="width: 50px; height: 50px;">
+                    <div>
+                        <h6 class="card-title mb-0 text-primary"><strong> {{ $vaga->nome_empresa }}</strong></h6>
+                        <p class="text-muted mb-0">{{ $vaga->titulo }}</p>
+                    </div>
                 </div>
 
+                <!-- Detalhes da vaga -->
+                <div class="card-body alinhamento">
+                    <div class="um">
+                    <p class="card-text"><i class="bi bi-geo-alt"></i> {{ $vaga->area }}</p>
+                    <p class="card-text"><i class="bi bi-geo-alt"></i> {{ $vaga->cidade }}</p>
+                    <p class="card-text"><i class="bi bi-building"></i> {{ $vaga->modalidade_trabalho }}</p>
+                    </div>
+                    <div class="dois">
+                    <p class="card-text"><i class="bi bi-briefcase"></i> {{ $vaga->regime_contratacao }}</p>
+                    <p class="card-text"><i class="bi bi-wheelchair"></i> Também p/ PcD: {{ $vaga->pcd == 1 ? 'Sim' : 'Não' }}</p>
+                    </div>
+                   </div>
+                   <div class="card-footer text-center">
+                        <a href="{{ route('vagas.show', $vaga->id) }}" class="btn btn-primary">Ver Detalhes</a>
+                    </div>
+
+                <!-- Data de publicação -->
+                <div class="card-footer text-muted">
+                {{ $vaga->data_postagem }}
+                </div>
             </div>
         </div>
+
         @endforeach
 
         @if($vagas->isEmpty())
@@ -120,3 +126,4 @@
 </div>
 
 @endsection
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css" rel="stylesheet">

@@ -98,6 +98,7 @@ class ControllerVagas extends Controller
     {
         return view('vagas.show', compact('vaga'));
     }
+    
 
     public function vagasadm(Vaga $vaga)
     {
